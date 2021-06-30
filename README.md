@@ -1,24 +1,7 @@
-# test
+# LoveLive! collection website
 
-## Project setup
-```
-npm install
-```
+## a website that store all my LoveLive! collection info
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Deploy on github pages: <a href="https://iamskyblue.github.io/ll_collection_web/" target="_blank">https://iamskyblue.github.io/ll_collection_web/</a>
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![](https://cdn.discordapp.com/attachments/854242714425360388/859821736573009930/IMG_20210630_234411.jpg)
