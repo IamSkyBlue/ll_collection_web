@@ -2,7 +2,11 @@
   <v-card color="light-blue lighten-4">
     <v-app-bar color="light-blue" dark app>
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-      <v-toolbar-title>思該不露的 LoveLive! 收藏</v-toolbar-title>
+      <v-toolbar-title>SkyBlue的 LoveLive! 收藏</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn icon @click="refresh">
+        <v-icon>mdi-refresh</v-icon>
+      </v-btn>
       <template v-slot:extension>
         <v-tabs grow v-model="active_tab">
           <v-tab @click="toCatalog('all')"> All </v-tab>
@@ -15,44 +19,27 @@
 
     <v-navigation-drawer v-model="drawer" fixed temporary>
       <v-list nav dense>
-        <v-list-item-group
-          v-model="group"
-          active-class="deep-blue--text text--accent-4"
-        >
-          <v-list-item @click="searchtoggle = true" v-show="!searchtoggle">
-            <v-list-item-icon>
-              <v-icon>mdi-magnify</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>搜尋</v-list-item-title>
-          </v-list-item>
+        <v-list-item-group active-class="deep-blue--text text--accent-4">
           <v-text-field
             class="mx-2 mb-2"
             v-model="searchtext"
-            v-show="searchtoggle"
-            placeholder="輸入ID"
+            placeholder="輸入物品上的編號"
             append-icon="mdi-magnify"
             append-outer-icon="mdi-window-close"
             @click:append="search"
             @submit="search"
             @keydown.enter="search"
-            @click:append-outer="
-              searchtoggle = !searchtoggle;
-              searchtext = '';
-            "
+            @click:append-outer="searchtext = ''"
             single-line
           ></v-text-field>
-          <v-list-item>
+          <v-list-item
+            href="https://github.com/IamSkyBlue/ll_collection_web"
+            target="_blank"
+          >
             <v-list-item-icon>
-              <v-icon>mdi-home</v-icon>
+              <v-icon>mdi-github</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Home</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon>mdi-account</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Account</v-list-item-title>
+            <v-list-item-title>Github</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -70,10 +57,7 @@ export default {
   mounted() {},
   data: () => ({
     drawer: false,
-    group: null,
-    searchtoggle: false,
     active_tab: 0,
-    items: [{ title: "Github", link: "/about" }],
     searchtext: "",
   }),
   methods: {
@@ -89,6 +73,9 @@ export default {
         name: "Info",
         params: { id: this.searchtext },
       });
+    },
+    refresh() {
+      this.$router.go();
     },
   },
 };
