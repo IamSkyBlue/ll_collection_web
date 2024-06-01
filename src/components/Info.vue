@@ -3,7 +3,7 @@
     <v-carousel :show-arrows="false"
       ><v-carousel-item v-for="photo in item.photos" :key="photo.slice(-10)"
         ><v-img
-          :src="photo"
+          :src="getImgUrl(photo)"
           class="white--text align-end"
           color="light-blue lighten-3"
           height="500px"
@@ -72,6 +72,9 @@ export default {
       list.forEach((element) => {
         element.randomnum = Math.random();
       });
+    },
+    getImgUrl: function (img) {
+      return require("@/assets/images/" + img);
     },
   },
   computed: {

@@ -8,7 +8,7 @@
         v-if="item.catalog == catalog || catalog == 0"
       >
         <v-img
-          :src="item.photos[0]"
+          :src="getImgUrl(item.photos[0])"
           class="white--text light-blue lighten-3 align-end"
           height="500px"
           contain
@@ -55,6 +55,9 @@ export default {
       list.forEach((element) => {
         element.randomnum = Math.random();
       });
+    },
+    getImgUrl: function (img) {
+      return require("@/assets/images/" + img);
     },
   },
   computed: {
